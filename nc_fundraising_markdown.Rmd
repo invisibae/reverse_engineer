@@ -38,3 +38,34 @@ nc_fundraising <- nc_fundraising %>%
 
 ```
 
+
+**MOVING ON**
+
+## Story Fact 1:
+
+"This year's legislative session also saw significant donations from hog farmers and beer distributors, both industries with important legislation before the General Assembly. Senate President Pro Tem Phil Berger's campaign alone raised nearly \$222,000 during session. Twenty-three people gave him the maximum allowed: $5,200."
+
+**(still not against identifying the hog farmers btw)**
+```{r}
+nc_fundraising %>%
+  filter(committee_name == "PHILIP E BERGER COMM") %>%
+  filter(date > "2018-05-16" & date < "2018-06-30") %>% 
+  group_by(committee_name) %>%
+  summarize(total_amount = sum(amount))
+
+
+```
+
+## Story Fact 2:
+
+“All told during the six-week General Assembly session, more than $1.1 million flowed into state legislators' campaign accounts. That's a conservative figure, reached by backing out money that simply flowed from one politician's campaign to another and money elected officials put into their own campaigns”
+
+**This is actually gonna be QUITE hard to do lol I think we have enough to probably just skip this one but I'm not against making an attempt**
+
+```{r}
+nc_fundraising %>%
+  filter(date > "2018-05-16" & date < "2018-06-30") %>% 
+  summarize(total_amount = sum(amount))
+
+
+```
