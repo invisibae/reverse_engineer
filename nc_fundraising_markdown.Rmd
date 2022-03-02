@@ -1,0 +1,40 @@
+---
+title: "nc_fundraising"
+author: "Greg Morton"
+date: "3/2/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(tidyr)
+
+```
+
+**Taking care of the housekeeping first**
+
+We begin by reading in the csv 
+
+
+```{r}
+nc_fundraising <- read_csv("nc_fundraising.csv")
+```
+
+## Data Cleaning
+
+Making 'amount' numeric
+
+```{r}
+nc_fundraising <- nc_fundraising %>%
+  mutate(amount = parse_number(amount))
+```
+
+Making 'date' a date
+```{r}
+nc_fundraising <- nc_fundraising %>%
+  mutate(date = mdy(date)) 
+
+```
+
